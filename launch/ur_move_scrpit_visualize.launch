@@ -1,0 +1,6 @@
+<launch>
+
+	<include file="$(find ur5_moveit_config)/launch/demo.launch"/>
+
+	<node name="ur_commander" pkg="ur_move_scripts" type="ur_move_from_file" respawn="false" output="screen"/>
+</launch>

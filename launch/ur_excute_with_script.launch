@@ -1,0 +1,10 @@
+<launch>
+
+	<include file="$(find ur5_moveit_config)/launch/ur5_moveit_planning_execution.launch"/>
+	<!--include file="$(find ur5_moveit_config)/launch/demo.launch"/-->
+	<include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch" >
+		<arg name="config" default="true"/>
+	</include>
+
+	<node name="arm_control_ur5" pkg="virt_human_arm" type="arm_control_ur5" respawn="false" output="screen"/>
+</launch>
