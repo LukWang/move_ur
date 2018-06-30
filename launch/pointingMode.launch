@@ -1,0 +1,8 @@
+<launch>
+    <param name="goal_frame" type="string" value="rHand"/>
+    <node name="ur_execution" pkg="ur_move_scripts" type="pointingModeDemo" respawn="false" output="screen" args="false"/>
+    <node name="intersection_pub" pkg="filter" type="intersection_pub.py" output="screen">
+        <param name="table" type="double" value="0.0"/>
+        <param name="offset" type="double" value="0.5"/>
+    </node>
+</launch>

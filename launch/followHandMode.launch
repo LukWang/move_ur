@@ -1,0 +1,5 @@
+<launch>
+    <param name="goal_frame" type="string" value="rHand"/>
+    <node name="ur_execution" pkg="ur_move_scripts" type="move_trac_ik" respawn="false" output="screen" args="false"/>
+    <node name="goal_frame_spawner" pkg="ur_move_scripts" type="followHand" output="screen"/>
+</launch>

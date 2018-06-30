@@ -12,22 +12,18 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
-  
-#  orocos_kdl
+  trac_ik_lib
   kdl_parser
-
-  moveit_ros_planning
-  moveit_ros_planning_interface
-  moveit_core
-  geometric_shapes
-
-
+  tf_conversions
+  message_generation
+  ros_myo
+  robotiq_s_model_control
 )
-
 # System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
 
+find_package(orocos_kdl REQUIRED)
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
@@ -64,11 +60,10 @@ find_package(Eigen3 REQUIRED)
 #   Message2.msg
 # )
 
-## Generate services in the 'srv' folder
+# Generate services in the 'srv' folder
 # add_service_files(
 #   FILES
-#   Service1.srv
-#   Service2.srv
+#   FollowHand.srv
 # )
 
 ## Generate actions in the 'action' folder
@@ -147,6 +142,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 #add_executable(ur_move_from_file src/ur_move_from_file.cpp)
  add_executable(ur_move_using_script_cpp src/move_using_script.cpp)
+ add_executable(move_trac_ik src/move_trac_ik.cpp)
+ add_executable(followHand src/followHand.cpp)
+ add_executable(pointingModeDemo src/pointingModeDemo.cpp)
  # add_executable(ur_move_kdl_jacbian src/move_kdl_jacobian.cpp)
 
 ## Rename C++ executable without prefix
@@ -168,6 +166,17 @@ target_link_libraries(ur_move_using_script_cpp
    ${catkin_LIBRARIES}
  )
 
+target_link_libraries(move_trac_ik
+   ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(followHand
+   ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(pointingModeDemo
+   ${catkin_LIBRARIES}
+ )
 #target_link_libraries(ur_move_kdl_jacbian
 #   ${catkin_LIBRARIES}
 # )
